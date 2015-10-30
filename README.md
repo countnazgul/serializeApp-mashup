@@ -12,3 +12,5 @@ The JSON file then can be put under version control for example
   - after the import is successfull navigate to `https://your-sense-server/extensions/serializeApp/serializeApp.html`
 
 Thanks to [Alexander Karlsson](https://twitter.com/mindspank) for [qsocks](https://github.com/mindspank/qsocks) and [serializeapp](https://github.com/mindspank/serializeapp)
+
+![serializeapp-mashup](https://raw.githubusercontent.com/countnazgul/serializeApp-mashup/master/serializeApp-mashup.png)
