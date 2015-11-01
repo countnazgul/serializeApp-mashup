@@ -228,6 +228,7 @@ var getConnections = require('./getDataConnections');
 
 serializeAppBundle = 
   function serializeApp(app, callback) {
+    var objects = 0;
 	if(!app || typeof app.createSessionObject !== 'function') {
 		throw new Error('Expects a valid qsocks app connection')
 	};
@@ -252,7 +253,7 @@ serializeAppBundle =
 			return appObj.properties = properties; 
 		})
 		.then(function () {
-		  	$( '#status' ).append( '"Load script" received <br />' );
+		  	$( '#status' ).append( '<b>"Load script" received </b> <br/>' );
 			return app.getScript().then(function (script) { return appObj.loadScript = script; })
 		})
 		.then(function () {
@@ -261,7 +262,16 @@ serializeAppBundle =
 			})).then(function (data) { return LISTS.forEach(function(d, y) {   
 			  var lists = Object.keys(d)[0];
 			  lists = lists.replace(lists[0], lists[0].toUpperCase());
-			  $( '#status' ).append( '"' + lists + '" received (' + data[y].length + ') <br /> ' );
+        if( data[y].length > 0) {
+           if( lists === 'Sheets' ) {
+              for( var i = 0; i < data[y].length; i ++ ) {
+                objects += data[y][i].qChildren.length;
+              }
+           }
+			     $( '#status' ).append( '<b>"' + lists + '" received (' + data[y].length + ')</b> <br /> ' );
+        } else {
+          $( '#status' ).append( '"' + lists + '" received (' + data[y].length + ') <br /> ' );
+        }
 			  appObj[Object.keys(d)[0]] = data[y] }); });
 		})
 		.then(function () {	
@@ -271,13 +281,22 @@ serializeAppBundle =
 				
 				return METHODS[key](app).then(function(data) {
 				  var keyDescr = key.replace(key[0], key[0].toUpperCase()); // returns Master 
-				  $( '#status' ).append( '"' + keyDescr + '" received (' + data.length + ') <br /> ' );
+          
+          if( data.length > 0 ) {
+				      $( '#status' ).append( '<b>"' + keyDescr + '" received (' + data.length + ')</b> <br /> ' );
+          } else {
+              $( '#status' ).append( '"' + keyDescr + '" received (' + data.length + ') <br /> ' );
+          }
 				  return appObj[key] = data 
 				});
 			}));		
 		})
 		.then(function() {
-		  
+          if( objects > 0 ) {
+				      $( '#status' ).append( '<b>"Objects" received (' + objects + ')</b> <br /> ' );
+          } else {
+              $( '#status' ).append( '<b>"Objects" received (' + objects + ')</b> <br /> ' );
+          }		  
 			return appObj;
 		})
 		.nodeify(callback);

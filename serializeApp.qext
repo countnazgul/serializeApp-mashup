@@ -1,7 +1,7 @@
 {
 	"type": "mashup",
 	"name": "serializeApp",
-	"version": "0.7.0",
+	"version": "0.7.1",
 	"description": "Mashup that will serialize app in json file",
 	"homepage": "",
 	"author": "",
