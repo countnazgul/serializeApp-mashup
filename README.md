@@ -14,3 +14,9 @@ The JSON file then can be put under version control for example
 Thanks to [Alexander Karlsson](https://twitter.com/mindspank) for [qsocks](https://github.com/mindspank/qsocks) and [serializeapp](https://github.com/mindspank/serializeapp)
 
 ![serializeapp-mashup](https://raw.githubusercontent.com/countnazgul/serializeApp-mashup/master/serializeApp-mashup.png)
+
+
+##### Changelog
+v0.7.1
+  * bold rows with more than 0 exporeted objects
+  * objects count is added ( sheet objects )
