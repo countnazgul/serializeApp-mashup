@@ -1,3 +1,5 @@
+#### Depreciated! Please use ["Backup and Restore" mashup](https://github.com/countnazgul/QS-backup-and-restore-app)
+
 Qlik Sense mashup that can be used to export (serialize) app to JSON file. 
 
 The JSON file then can be put under version control for example
